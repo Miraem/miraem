@@ -24,14 +24,5 @@ public class PetRock {
         happy = true;
     }
 
-    public String getHappyMessage(){
-        if(!happy){
-            throw new IllegalStateException();
-        }
-        return "I'm happy!";
-    }
 
-    public int getFavNumber(){
-        return 42;
-    }
 }
