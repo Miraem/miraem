@@ -1,7 +1,7 @@
 package com.miraem;
 
 public class CountingTwos {
-    public static int count2sInRangeAtDigit(int number, int d) {
+    private static int count2sInRangeAtDigit(int number, int d) {
         int powerOf10 = (int) Math.pow(10, d);
         int nextPowerOf10 = powerOf10 * 10;
         int right = number % powerOf10;
@@ -19,7 +19,7 @@ public class CountingTwos {
         }
     }
 
-    public static int count2sInRange(int number) {
+    private static int count2sInRange(int number) {
         int count = 0;
         int len = String.valueOf(number).length();
         for (int digit = 0; digit < len; digit++) {
@@ -27,9 +27,34 @@ public class CountingTwos {
         }
         return count;
     }
+    //  В лоб.
+    private static int numberOf2sInRange(int n) {
+        int count = 0;
+        for (int i = 2; i <= n; i++) { // Можем начать с 2
+            count += numberOf2s(i);
+        }
+        return count;
+    }
+    /* подсчитываем число '2' в одном числе */
+    private static int numberOf2s(int n) {
+        int count = 0;
+        while (n > 0) {
+            if (n % 10 == 2) {
+                count++;
+            }
+            n = n / 10;
+        }
+        return count;
+    }
 
     public static void main(String[] args) {
-        System.out.println(count2sInRange(1002));
+        int n = 1000;
+        //В лоб
+        System.out.println(numberOf2sInRange(n));
+        //Через жопу.
+        System.out.println(count2sInRange(n));
+
+
     }
 
 }
